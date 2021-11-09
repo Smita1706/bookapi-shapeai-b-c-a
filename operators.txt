@@ -1,0 +1,43 @@
+Basic operatots which you find in JavaScript are
+1. Arithmetic Operators (+, -, /, *, %, ++, --,  )
+2. Comparison (Relational) Operators (==, ===, !=, !==, >, >=, <, <=)
+3. Bitwise Operators (&, |, <<, >>)
+4. Logical Operators (&&, ||, !)
+5. Assignment Operators (=, +=, -=, *=, /=, %=)
+
+MongoDB Operators  -> Powerfull yet devs won't use them
+
+Arrays [1,2,3,4]
+1) $push  It pushesh perticular element in array.
+2) $pop   It delete the last element from the array
+3) $pull  It will delete specific element you have to specify element that you want to delete
+      example:  $pull{ authors: 1 }   
+4) $addToSet -> clever way of pushing data into array
+     It checks for unique ness .
+     if the element is already present it will not add that element again in array.
+
+$inc   (++)  $inc{postCount :+1} for increment 
+             $inc{postCount :-1} for decrement
+$min         $min{amount}
+             balance:2000->$min{balance:200}
+             this will check that the balance given inn the min is small if yes then 
+             update it by 2000
+             if no then skip.
+$max         same as min.
+$set         create new key and add value.
+         $set{
+             familyCount:5
+            }
+$unset     delete perticular key value pair.
+            $unset{
+             familyCount:5
+            }
+
+Book.update(
+   { sku: "new value" },
+   {    
+       $unset: { quantity: "", instock: "" },
+        $inc: { postCount: +2 } 
+    }
+)
+
